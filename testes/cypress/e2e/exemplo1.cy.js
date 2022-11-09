@@ -32,6 +32,15 @@ describe('Criando cenário de teste para o site globalsqa', () => { //Cenário d
     cy.get('h1.ng-binding').should('contain.text', info[0])
   })
 
+  it('Caso de teste: Deletando um usuario com sucesso', () => { //caso de teste
+    let info = criarUsuario()
+    cy.login(info[0], info[1])
+    cy.get('.ng-binding > a').click()
+    cy.get('.btn').click()
+    cy.login(info[0], info[1])
+    cy.get('.ng-binding').should('have.text', 'Username or password is incorrect') 
+  })
+
 })
 
 function criarUsuario(){
